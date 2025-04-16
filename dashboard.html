@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Staff Dashboard - Resume Template</title>
+    <style>
+        /* Updated CSS styling for the resume template */
+        body {
+            font-family: 'Helvetica', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #eaeaea;
+        }
+        .resume {
+            max-width: 900px;
+            margin: auto;
+            background-color: #fff;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        .header img {
+            border-radius: 50%;
+            max-width: 150px;
+            margin-right: 30px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+        .header h2 {
+            margin: 5px 0 0 0;
+            font-size: 24px;
+            color: #555;
+        }
+        .contact-info {
+            margin-bottom: 30px;
+        }
+        .contact-info p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h3 {
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .section p, .section ul {
+            margin: 0 0 10px 0;
+            color: #555;
+            line-height: 1.6;
+        }
+        .section ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        .skills, .hobbies {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .skills span, .hobbies span {
+            background-color: #4CAF50;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 20px;
+            color: #fff;
+            font-size: 14px;
+        }
+        .social-media {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .social-media a {
+            margin: 0 10px;
+            color: #555;
+            font-size: 20px;
+            text-decoration: none;
+        }
+        .social-media a:hover {
+            color: #000;
+        }
+        /* Style for labels in additional info */
+        .info-label {
+            font-weight: bold;
+            color: #333;
+        }
+        /* Style for the Print and Email Buttons */
+        .action-buttons {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .action-buttons button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        .action-buttons button:hover {
+            background-color: #45a049;
+        }
+        footer {
+         text-align: center;
+         font-size: 12px;
+        margin: 10px 0;  
+        color: #555;     
+        }
+        /* Hide the action buttons in print view */
+        @media print {
+            .action-buttons,
+            .social-media {
+                display: none;
+            }
+            body {
+                background-color: #fff;
+                margin: 0;
+                padding: 0;
+            }
+            .resume {
+                box-shadow: none;
+                padding: 20px;
+                margin: 0;
+            }
+        }
+    </style>
+    <!-- Include EmailJS SDK -->
+    <script src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("PR3TlKsuUs66578Py"); // Replace with your EmailJS user ID
+        })();
+    </script>
+    <script type="text/javascript"
+         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+       (function(){
+        emailjs.init({
+       publicKey: "PR3TlKsuUs66578Py",
+          });
+        })();
+    </script>
+</head>
+<body>
+
+<div class="resume">
+    <!-- Header Section -->
+    <div class="header">
+        <!-- Photo -->
+        <img src="" alt="Profile Photo" id="profilePhoto">
+        <div>
+            <!-- Name -->
+            <h1 id="staffName">John Doe</h1>
+            <!-- Position and Department -->
+            <h2 id="staffPosition">Senior Lecturer, Department of Computer Science</h2>
+            <!-- Status -->
+            <p id="staffStatus">Status: Academic - Fulltime/Main</p>
+        </div>
+    </div>
+
+    <!-- Contact Information -->
+    <div class="contact-info">
+        <p id="staffEmail"><strong>Email:</strong> johndoe@example.com</p>
+        <p id="staffPhone"><strong>Phone:</strong> +1234567890</p>
+        <p id="staffCode"><strong>Staff Code/ID:</strong> ABC123</p>
+    </div>
+
+    <!-- Personal Statement -->
+    <div class="section">
+        <h3>Personal Statement</h3>
+        <p id="personalStatementContent">A brief summary about the staff member goes here.</p>
+    </div>
+
+    <!-- Area of Specialization -->
+    <div class="section">
+        <h3>Area of Specialization</h3>
+        <p id="specializationContent">Computer Science, Artificial Intelligence</p>
+    </div>
+
+    <!-- Qualifications -->
+    <div class="section">
+        <h3>Qualifications</h3>
+        <p id="qualificationContent">Ph.D. in Computer Science from XYZ University.</p>
+        <p><strong>Degree:</strong> <span id="degreeContent">Ph.D.</span></p>
+        <p><strong>University:</strong> <span id="universityContent">XYZ University</span></p>
+    </div>
+
+    <!-- Professional Skills -->
+    <div class="section">
+        <h3>Professional Skills</h3>
+        <div class="skills" id="skillsContent">
+            <!-- Skills badges will be inserted here -->
+        </div>
+        <p><strong>Skills Percentage Level:</strong> <span id="skillsPercentageContent">81-100%</span></p>
+    </div>
+
+    <!-- Hobbies -->
+    <div class="section">
+        <h3>Hobbies</h3>
+        <div class="hobbies" id="hobbiesContent">
+            <!-- Hobbies badges will be inserted here -->
+        </div>
+    </div>
+
+    <!-- Additional Sections -->
+    <div class="section">
+        <h3>Motivation</h3>
+        <p id="motivationContent">What motivates the staff member.</p>
+    </div>
+
+    <div class="section">
+        <h3>Favorite Working/Association Group</h3>
+        <p id="favoriteGroupContent">Details about the favorite group and reasons.</p>
+    </div>
+
+    <div class="section">
+        <h3>Favorite Discussion Group</h3>
+        <p id="favoriteDiscussionContent">Details about the favorite discussion group and reasons.</p>
+    </div>
+
+    <div class="section">
+        <h3>Best Life Experience</h3>
+        <p id="bestExperienceContent">Description of the best life experience.</p>
+    </div>
+
+ <div class="action-buttons">
+    <button onclick="window.location.href='welcome_address.html'">Welcome Address</button>
+</div>
+
+    <!-- Social Media Links -->
+    <div class="social-media" id="socialMediaLinks">
+        <!-- Social media links will be inserted here -->
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+        <button onclick="window.print()">Print Resume</button>
+        <button onclick="sendEmail()">Email Resume</button>
+    </div>
+</div>
+<footer>
+    <p>Copyright ©2024; Design By Amex Team</p>
+</footer>
+<script src="dashboard.js"></script>
+<!-- Include Font Awesome for social media icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

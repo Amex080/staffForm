@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome Address - [Staff Name]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Optional: Include Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Heading */
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #4CAF50;
+            text-align: center;
+        }
+
+        /* Welcome Address Content */
+        #welcomeAddressContent {
+            font-size: 18px;
+            text-align: justify;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .action-buttons a,
+        .action-buttons button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .action-buttons a:hover,
+        .action-buttons button:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            font-size: 12px;
+            margin: 20px 0;
+            color: #555;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            #welcomeAddressContent {
+                font-size: 16px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: #fff;
+            }
+
+            .container {
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .action-buttons,
+            footer {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1> My Welcome Address</h1>
+        <p id="welcomeAddressContent">Loading...</p>
+        <div class="action-buttons">
+            <a href="dashboard.html">Back to Dashboard</a>
+            <button onclick="window.print()">Print Welcome Address</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024; Design By Amex Team</p>
+    </footer>
+
+    <script>
+        // Retrieve staffData from localStorage
+        var staffDataJSON = localStorage.getItem('staffData');
+        if (staffDataJSON) {
+            var staffData = JSON.parse(staffDataJSON);
+            document.title = "Welcome Address - " + staffData.name;
+            document.getElementById('welcomeAddressContent').innerText = staffData.welcomeAddress || 'No Welcome Address provided.';
+        } else {
+            alert('No staff data found. Please fill out the form first.');
+            window.location.href = 'index.html'; // Replace with your actual form page filename
+        }
+    </script>
+</body>
+</html>
